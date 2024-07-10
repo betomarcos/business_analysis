@@ -1,7 +1,8 @@
 
 
 # Dataset: 
-- https://archive.ics.uci.edu/dataset/222/bank+marketing 
+- https://archive.ics.uci.edu/dataset/222/bank+marketing
+- bank-additional-full.csv 
 - The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).
 - Date 2012
 - Columns

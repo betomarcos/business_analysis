@@ -65,7 +65,7 @@ CREATE TABLE `gett_orders` (
 ----------------------------------------------------------------
 ## Analysis
 
-Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+**Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?**
 
 Ran query: 
 ```sql
@@ -81,4 +81,17 @@ Returned a list of ids with the cancel status and driver status, then created a 
 
 <img width="720" alt="image" src="https://github.com/user-attachments/assets/59b02b5d-1f99-4f4e-957e-aa75e2d3c424">
 
+Answers/Insights: 
+* Percentage of cancellation once a driver is assigned =
+* Percentage of cancellation before a driver is assigned = 
+* we can see that when a driver is assigned, there is almost 0% chance that the ride is cancelled by the system. 
 
+
+**Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?**
+...
+
+**Q3: Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?**
+...
+
+**Q4: Plot the distribution of average ETA by hours. How can this plot be explained?**
+...

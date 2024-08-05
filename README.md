@@ -30,3 +30,33 @@ The **data_offers** data set is a simple map with 2 columns:
 - offer_id - ID of an offer
 
 Practicalities: Make sure that the solution reflects your entire thought process including the preparation of data - it is more important how the code is structured rather than just the final result or plot.
+
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+## SQL Create statements
+
+``` sql
+CREATE TABLE `gett_offers` (
+  `order_gk` bigint DEFAULT NULL,
+  `offer_id` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
+
+``` sql
+CREATE TABLE `gett_orders` (
+  `order_datetime` text,
+  `origin_longitude` double DEFAULT NULL,
+  `origin_latitude` double DEFAULT NULL,
+  `m_order_eta` text,
+  `order_gk` bigint DEFAULT NULL,
+  `order_status_key` int DEFAULT NULL,
+  `is_driver_assigned_key` int DEFAULT NULL,
+  `cancellations_time_in_seconds` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
+
+
+## SQL exploratory data analysis
+

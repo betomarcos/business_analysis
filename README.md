@@ -8,10 +8,10 @@ Notes
 * offer = when a driver accepts a ride
 
 ## Assignment
-- Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
-- Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?
-- Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?
-- Plot the distribution of average ETA by hours. How can this plot be explained?
+- Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+- Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?
+- Q3: Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?
+- Q4: Plot the distribution of average ETA by hours. How can this plot be explained?
 - BONUS Hexagons. Using the h3 and folium packages, calculate how many sizes 8 hexes contain 80% of all orders from the original data sets and visualise the hexes, colouring them by the number of fails on the map.
 
 ## Data Description
@@ -61,6 +61,24 @@ CREATE TABLE `gett_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
+----------------------------------------------------------------
+----------------------------------------------------------------
+## Analysis
 
-## SQL exploratory data analysis
+Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+
+Ran query: 
+```sql
+-- get counts of cancellations by both categories: order_status_key , and is_driver_assigned_key
+select 
+	order_gk as order_id,
+    case when order_status_key = 4 then 'client' else 'system' end as cancel_status, 
+    case when is_driver_assigned_key  = 1 then 'yes' else 'no' end as driver_assigned
+from training.gett_orders;
+```
+
+Returned a list of ids with the cancel status and driver status, then created a pivot table in Google Sheets:
+
+<img width="720" alt="image" src="https://github.com/user-attachments/assets/59b02b5d-1f99-4f4e-957e-aa75e2d3c424">
+
 

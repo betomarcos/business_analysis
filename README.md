@@ -75,20 +75,21 @@ select
     case when order_status_key = 4 then 'client' else 'system' end as cancel_status, 
     case when is_driver_assigned_key  = 1 then 'yes' else 'no' end as driver_assigned
 from training.gett_orders;
-```
-
-Returned a list of ids with the cancel status and driver status, then created a pivot table in Google Sheets:
+``` 
+  
+Returned a list of ids with the cancel status and driver status, then created a pivot table in Google Sheets:  
 
 <img width="720" alt="image" src="https://github.com/user-attachments/assets/59b02b5d-1f99-4f4e-957e-aa75e2d3c424">
 
 Answers/Insights: 
 * Percentage of cancellation once a driver is assigned =
 * Percentage of cancellation before a driver is assigned = 
-* we can see that when a driver is assigned, there is almost 0% chance that the ride is cancelled by the system. 
-
+* we can see that when a driver is assigned, there is almost 0% chance that the ride is cancelled by the system.   
+  
 
 **Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?**
-...
+...  
+
 
 **Q3: Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?**
 ...

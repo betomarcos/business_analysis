@@ -1,32 +1,32 @@
+# Insights from Failed Orders
+Project from: https://platform.stratascratch.com/data-projects/insights-failed-orders
 
+_Gett, previously known as GetTaxi, is an Israeli-developed technology platform solely focused on corporate Ground Transportation Management (GTM). They have an application where clients can order taxis, and drivers can accept their rides (offers). At the moment, when the client clicks the Order button in the application, the matching system searches for the most relevant drivers and offers them the order. In this task, we would like to investigate some matching metrics for orders that did not completed successfully, i.e., the customer didn't end up getting a car._
 
-# Dataset: 
-- https://archive.ics.uci.edu/dataset/222/bank+marketing
-- bank-additional-full.csv 
-- The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).
-- Date 2012
-- Columns
-   - age (numeric)
-   - job : type of job (categorical: "admin.","unknown","unemployed","management","housemaid","entrepreneur","student", "blue-collar","self-employed","retired","technician","services") 
-   - marital : marital status (categorical: "married","divorced","single"; note: "divorced" means divorced or widowed)
-   - education (categorical: "unknown","secondary","primary","tertiary")
-   - default: has credit in default? (binary: "yes","no")
-   - balance: average yearly balance, in euros (numeric) 
-   - housing: has housing loan? (binary: "yes","no")
-   - loan: has personal loan? (binary: "yes","no")
+## Assignment
+- Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+- Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?
+- Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?
+- Plot the distribution of average ETA by hours. How can this plot be explained?
+- BONUS Hexagons. Using the h3 and folium packages, calculate how many sizes 8 hexes contain 80% of all orders from the original data sets and visualise the hexes, colouring them by the number of fails on the map.
 
-   related with the last contact of the current campaign:
-   - contact: contact communication type (categorical: "unknown","telephone","cellular") 
-   - day: last contact day of the month (numeric)
-   - month: last contact month of year (categorical: "jan", "feb", "mar", ..., "nov", "dec")
-   - duration: last contact duration, in seconds (numeric)
+## Data Description
+We have two data sets: data_orders and data_offers, both being stored in a CSV format. 
 
-  other attributes:
-  - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
-  - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric, -1 means client was not previously contacted)
-  - previous: number of contacts performed before this campaign and for this client (numeric)
-  - poutcome: outcome of the previous marketing campaign (categorical: "unknown","other","failure","success")
+The **data_orders** data set contains the following columns:
+- order_datetime - time of the order
+- origin_longitude - longitude of the order
+- origin_latitude - latitude of the order
+- m_order_eta - time before order arrival
+- order_gk - order number
+- order_status_key - status, an enumeration consisting of the following mapping:
+    - 4 - cancelled by client,
+    - 9 - cancelled by system, i.e., a reject
+- is_driver_assigned_key - whether a driver has been assigned
+- cancellation_time_in_seconds - how many seconds passed before cancellation
 
-  Output variable (desired target):
-  - y - has the client subscribed a term deposit? (binary: "yes","no")_
+The **data_offers** data set is a simple map with 2 columns:
+- order_gk - order number, associated with the same column from the orders data set
+- offer_id - ID of an offer
 
+Practicalities: Make sure that the solution reflects your entire thought process including the preparation of data - it is more important how the code is structured rather than just the final result or plot.

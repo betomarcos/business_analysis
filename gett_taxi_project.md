@@ -70,13 +70,11 @@ from training.gett_orders;
 Returned a list of ids with the cancel status and driver status, then created a pivot table in Google Sheets:  
 
 
-<img width="665" alt="image" src="https://github.com/user-attachments/assets/c1eb73dc-2558-422d-aaba-f6965780f46f">
+<img width="840" alt="image" src="https://github.com/user-attachments/assets/7b2aaf07-1a8c-4799-9952-977e445549c5">
 <br/>
 
 Answers/Insights: 
-* Percentage of cancellation once a driver is assigned =
-* Percentage of cancellation before a driver is assigned = 
-* we can see that when a driver is assigned, there is almost 0% chance that the ride is cancelled by the system.   
+* Percentage of cancellation once a driver is assigned = 26% of the cancellations happen when a driver was already assigned, regardless of system vs client cancellation.
 
 **Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?**<br/>
 ...  

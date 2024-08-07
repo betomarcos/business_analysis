@@ -3,10 +3,6 @@ Project from: https://platform.stratascratch.com/data-projects/insights-failed-o
 
 _Gett, previously known as GetTaxi, is an Israeli-developed technology platform solely focused on corporate Ground Transportation Management (GTM). They have an application where clients can order taxis, and drivers can accept their rides (offers). At the moment, when the client clicks the Order button in the application, the matching system searches for the most relevant drivers and offers them the order. In this task, we would like to investigate some matching metrics for orders that did not completed successfully, i.e., the customer didn't end up getting a car._
 
-Notes
-* order = when a client requests a taxis
-* offer = when a driver accepts a ride
-
 ## Data Description
 We have two data sets: data_orders and data_offers, both being stored in a CSV format.  
 
@@ -16,8 +12,6 @@ We have two data sets: data_orders and data_offers, both being stored in a CSV f
 
 **data_offers**  
 <img width="213" alt="image" src="https://github.com/user-attachments/assets/db60e175-e2f1-4ecb-8d5d-2a8d449bf1e9">
-
-
 
 
 ----------------------------------------------------------------

@@ -55,7 +55,7 @@ CREATE TABLE `gett_orders` (
 
 ## Analysis
 
-**Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?**
+## Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
 
 Ran query: 
 ```sql
@@ -73,15 +73,30 @@ Returned a list of ids with the cancel status and driver status, then created a 
 <img width="840" alt="image" src="https://github.com/user-attachments/assets/7b2aaf07-1a8c-4799-9952-977e445549c5">
 <br/>
 
-Answers/Insights: 
+**Answers/Insights:** 
 * Percentage of cancellation once a driver is assigned = 26% of the cancellations happen when a driver was already assigned, regardless of system vs client cancellation.
 
-**Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?**<br/>
-...  
+<br/>
+
+## Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?<br/>
+
+Ran query:
+```sql
+SELECT 
+    HOUR(order_datetime) AS hour_of_day,
+    SUM(CASE WHEN order_status_key = 4 THEN 1 ELSE 0 END) AS client_counts,
+    SUM(CASE WHEN order_status_key = 9 THEN 1 ELSE 0 END) AS system_counts
+FROM training.gett_orders
+GROUP BY HOUR(order_datetime) ORDER BY hour_of_day ASC;
+```
+<br/>  
+Returned a list of the counts of cancellations (clients, systems) per hour of the day, then created a line chart in Google Sheets to visualize the distribution trends:  
+
+<img width="972" alt="image" src="https://github.com/user-attachments/assets/2869d9c4-1cce-45dd-a690-0f7a4e614019">
+<br/>
+
+**Answers/Insights:** 
+* 8:00am specifically has an abnormal peak. 7:00am-9:00am, and 8pm-11pm are the ranges where we can see most of the cancellations.
+* This could be explained due to those rush hours being when workers call drivers to take them to and from work, and potentially after work dinner and back home/hotel.
 
 
-**Q3: Plot the average time to cancellation with and without driver, by the hour. If there are any outliers in the data, it would be better to remove them. Can we draw any conclusions from this plot?**<br/>
-...
-
-**Q4: Plot the distribution of average ETA by hours. How can this plot be explained?**<br/>
-...

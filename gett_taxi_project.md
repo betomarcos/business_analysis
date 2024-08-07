@@ -8,31 +8,23 @@ Notes
 * offer = when a driver accepts a ride
 
 ## Data Description
-We have two data sets: data_orders and data_offers, both being stored in a CSV format. 
+We have two data sets: data_orders and data_offers, both being stored in a CSV format.  
 
-The **data_orders** data set contains the following columns:
-- order_datetime - time of the order
-- origin_longitude - longitude of the order
-- origin_latitude - latitude of the order
-- m_order_eta - time before order arrival
-- order_gk - order number
-- order_status_key - status, an enumeration consisting of the following mapping:
-    - 4 - cancelled by client,
-    - 9 - cancelled by system, i.e., a reject
-- is_driver_assigned_key - whether a driver has been assigned
-- cancellation_time_in_seconds - how many seconds passed before cancellation
+**data_orders**  
+<img width="999" alt="image" src="https://github.com/user-attachments/assets/5dc8d3ea-ac92-4a76-8e47-b9f3624a49c5">
 
-The **data_offers** data set is a simple map with 2 columns:
-- order_gk - order number, associated with the same column from the orders data set
-- offer_id - ID of an offer
 
-Practicalities: Make sure that the solution reflects your entire thought process including the preparation of data - it is more important how the code is structured rather than just the final result or plot.
+**data_offers**  
+<img width="213" alt="image" src="https://github.com/user-attachments/assets/db60e175-e2f1-4ecb-8d5d-2a8d449bf1e9">
+
 
 
 
 ----------------------------------------------------------------
 ## SQL Create statements
 
+To start the project, the CSV data was exported and loaded to a Mysql database. Below the queries to create the 2 tables.
+<br/>
 ``` sql
 CREATE TABLE `gett_offers` (
   `order_gk` bigint DEFAULT NULL,
@@ -55,9 +47,10 @@ CREATE TABLE `gett_orders` (
 
 ## Analysis
 
-## Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+Once the tables were created in Mysql, did analysis to respond to the main questions. Utilized MySQL and Google Sheets to create visualizations.
 
-Ran query: 
+## Q1: Build up distribution of orders according to reasons for failure: cancellations before and after driver assignment, and reasons for order rejection. Analyse the resulting plot. Which category has the highest number of orders?
+ 
 ```sql
 -- get counts of cancellations by both categories: order_status_key , and is_driver_assigned_key
 select 
@@ -69,7 +62,6 @@ from training.gett_orders;
 <br/>  
 Returned a list of ids with the cancel status and driver status, then created a pivot table in Google Sheets:  
 
-
 <img width="840" alt="image" src="https://github.com/user-attachments/assets/7b2aaf07-1a8c-4799-9952-977e445549c5">
 <br/>
 
@@ -80,7 +72,6 @@ Returned a list of ids with the cancel status and driver status, then created a 
 
 ## Q2: Plot the distribution of failed orders by hours. Is there a trend that certain hours have an abnormally high proportion of one category or another? What hours are the biggest fails? How can this be explained?<br/>
 
-Ran query:
 ```sql
 SELECT 
     HOUR(order_datetime) AS hour_of_day,
